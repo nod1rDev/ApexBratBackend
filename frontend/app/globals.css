@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* globals.css */
+/* globals.css */
+body {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+button {
+  color: white;
+}
