@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const videoRoutes = require("./src/routes/videoRoutes");
-const userRoutes = require("./src/routes/userRoutes");
+const videoRoutes = require("./routes/videoRoutes"); // Modul yo‘li to‘g‘rilandi
+const userRoutes = require("./routes/userRoutes");  // Modul yo‘li to‘g‘rilandi
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // 'uploads' papkasini tekshirish va yaratish
-const uploadDir = path.join(__dirname, "uploads");
+const uploadDir = path.join(__dirname, "../uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
   console.log(`'uploads' papkasi yaratildi: ${uploadDir}`);
@@ -39,6 +39,7 @@ app.use("/api/videos", videoRoutes);
 app.use("/api/users", userRoutes);
 
 // Serverni ishga tushurish
-app.listen(process.env.PORT, () => {
-  console.log(`Server http://localhost:${process.env.PORT} da ishlayapti`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server http://localhost:${PORT} da ishlayapti`);
 });
